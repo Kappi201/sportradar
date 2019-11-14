@@ -1,5 +1,7 @@
 <h2>Teams</h2>
 <div class="row">
+
+    <!--Teams-->
     <div class="col-8">
         <ul class="list-group pt-2 pb-2">
             <?php foreach ($teams->getAll() as $team): ?>
@@ -12,6 +14,8 @@
             <?php endforeach; ?>
         </ul>
     </div>
+
+    <!--Hinzufügen-->
     <div class="col">
         <h3>Team hinzufügen:</h3>
         <?php if (isset($error)) echo '<div class="alert alert-danger">' . $error . '</div>'; ?>

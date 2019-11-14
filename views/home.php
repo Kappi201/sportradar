@@ -2,6 +2,8 @@
 
 <div class="row">
     <div class="col-8">
+
+        <!--Filter-->
         <div class="d-flex flex-row justify-content-start">
             <div class="p-0 mr-2">
                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sportart
@@ -34,6 +36,8 @@
                 </ul>
             </div>
         </div>
+
+        <!--Termine-->
         <ul class="list-group pt-2 pb-2">
 
             <?php foreach ($dates->getAll() as $date): ?>
@@ -53,7 +57,10 @@
             <?php endforeach; ?>
         </ul>
     </div>
+
+    <!--Hinzufügen-->
     <div class="col">
+
         <h3>Spiel hinzufügen:</h3>
         <?php if (isset($error)) echo '<div class="alert alert-danger">' . $error . '</div>'; ?>
         <form method="POST">

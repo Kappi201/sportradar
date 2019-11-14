@@ -31,6 +31,10 @@ class Date
         }
 
         if (isset($filteredBy)) {
+
+            //Je nach Filterart unterschiedliche addition für die SQL Abfrage
+
+            //Hier für Sport --> bisschen verschachteler weil sport_id in teams definiert ist
             if ($filteredBy == 'sportId') {
                 //Alle Teams welche die SportId haben und danach in Array gepackt
                 $team = new Team();
@@ -43,12 +47,15 @@ class Date
                 }
                 if ($newArray != '') {
                     $teamIds = join("','", $newArray);
-                    $addition = "WHERE team_a_id IN ('$teamIds') ORDER BY date";
+                    $addition = "WHERE team_a_id IN ('$teamIds')";
                 }
             }
+            //Hier für Teams
             if ($filteredBy == 'teamId') {
                 $addition =  "WHERE team_a_id = ".$_GET['teamId']." OR team_b_id = ".$_GET['teamId'];
             }
+
+            //Hier für Location
             if ($filteredBy == 'locationId') {
                 $addition =  "WHERE location_id = ".$_GET['locationId'];
             }
@@ -56,7 +63,7 @@ class Date
         }
 
         //Abfrage mit jeweiliger addition falls vorhanden
-        $stmt = $this->db->prepare("SELECT * FROM dates ".$addition);
+        $stmt = $this->db->prepare("SELECT * FROM dates ".$addition." ORDER BY date");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

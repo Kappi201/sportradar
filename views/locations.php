@@ -1,5 +1,7 @@
 <h2>Locations</h2>
 <div class="row">
+
+    <!--Locations-->
     <div class="col-8">
         <ul class="list-group pt-2 pb-2">
             <?php foreach ($locations->getAll() as $location): ?>
@@ -12,6 +14,8 @@
             <?php endforeach; ?>
         </ul>
     </div>
+
+    <!--Hinzufügen-->
     <div class="col">
         <h3>Location hinzufügen:</h3>
         <?php if (isset($error)) echo '<div class="alert alert-danger">' . $error . '</div>'; ?>
