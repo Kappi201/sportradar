@@ -16,7 +16,8 @@ class Location{
 
     }
 
-    public function getLocations(){
+    //Alle Locations
+    public function getAll(){
 
         $stmt = $this->db->prepare("SELECT * FROM locations");
         $stmt->execute();
@@ -26,7 +27,8 @@ class Location{
 
     }
 
-    public function getLocation($id){
+    //1 Location gefunden mit angegbener ID
+    public function get($id){
 
         $stmt = $this->db->prepare("SELECT * FROM locations WHERE id = :id");
         $stmt->bindValue(":id",$id);
@@ -37,5 +39,15 @@ class Location{
 
     }
 
+    //In Tabelle einfügen
+    public function add($name, $address)
+    {
+
+        $stmt = $this->db->prepare("INSERT INTO locations (name, address) VALUES (:name, :address)");
+        $stmt->bindValue(":name", $name);
+        $stmt->bindValue(":address", $address);
+        $stmt->execute();
+
+    }
 
 }

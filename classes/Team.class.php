@@ -16,7 +16,8 @@ class Team{
 
     }
 
-    public function getTeams(){
+    //alle Teams
+    public function getAll(){
 
         $stmt = $this->db->prepare("SELECT * FROM teams");
         $stmt->execute();
@@ -26,7 +27,20 @@ class Team{
 
     }
 
-    public function getTeam($id){
+    //Alle Teams welche die angegebene sportId haben
+    public function getAllBySport($id){
+
+        $stmt = $this->db->prepare("SELECT id FROM teams WHERE sport_id = :id");
+        $stmt->bindValue(":id",$id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+
+    }
+
+    //1 Team gefunden mit angegbener ID
+    public function get($id){
 
         $stmt = $this->db->prepare("SELECT * FROM teams WHERE id = :id");
         $stmt->bindValue(":id",$id);
@@ -34,6 +48,17 @@ class Team{
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $result;
+
+    }
+
+    //In Tabelle einfügen
+    public function add($name,$sportId)
+    {
+
+        $stmt = $this->db->prepare("INSERT INTO teams (name, sport_id) VALUES (:name, :sport_id)");
+        $stmt->bindValue(":name", $name);
+        $stmt->bindValue(":sport_id", $sportId);
+        $stmt->execute();
 
     }
 

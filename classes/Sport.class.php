@@ -16,7 +16,8 @@ class Sport{
 
     }
 
-    public function getSports(){
+    //Alle Sportarten
+    public function getAll(){
 
         $stmt = $this->db->prepare("SELECT * FROM sports");
         $stmt->execute();
@@ -26,7 +27,8 @@ class Sport{
 
     }
 
-    public function getSport($id){
+    //1 Sportart gefunden mit angegbener ID
+    public function get($id){
 
         $stmt = $this->db->prepare("SELECT * FROM sports WHERE id = :id");
         $stmt->bindValue(":id",$id);
@@ -37,5 +39,14 @@ class Sport{
 
     }
 
+    //In Tabelle einfügen
+    public function add($name)
+    {
+
+        $stmt = $this->db->prepare("INSERT INTO sports (name) VALUES (:name)");
+        $stmt->bindValue(":name", $name);
+        $stmt->execute();
+
+    }
 
 }

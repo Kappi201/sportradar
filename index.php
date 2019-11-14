@@ -10,7 +10,11 @@ $sports = new Sport();
 
 //Controllers
 require_once("controllers/datesController.php");
+require_once("controllers/teamsController.php");
+require_once("controllers/sportsController.php");
+require_once("controllers/locationsController.php");
 
+//$l gibt die aktuelle View and (wird auch im Header verwendet für die Navigation), Standard ist included home.php
 if (isset($_GET['l'])) {
     $l = $_GET['l'];
 } else {

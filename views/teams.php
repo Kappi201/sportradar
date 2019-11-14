@@ -1,25 +1,30 @@
 <h2>Teams</h2>
-<ul class="list-group">
-    <?php foreach ($teams->getTeams() as $team): ?>
+<div class="row">
+    <div class="col-8">
+        <ul class="list-group pt-2 pb-2">
+            <?php foreach ($teams->getAll() as $team): ?>
 
-            <li class="list-group-item">
-                <b><?= $team['name'] ?></b><br>
-                <?= $sports->getSport($team['sport_id'])['name'] ?>
-            </li>
+                <li class="list-group-item">
+                    <b><?= $team['name'] ?></b><br>
+                    <?= $sports->get($team['sport_id'])['name'] ?>
+                </li>
 
-    <?php endforeach; ?>
-</ul>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <div class="col">
+        <h3>Team hinzufügen:</h3>
+        <?php if (isset($error)) echo '<div class="alert alert-danger">' . $error . '</div>'; ?>
+        <form method="POST">
+            <input type="text" name="name" placeholder="Teamname" class="form-control mb-2" required>
+            <select class="custom-select mb-2" name="sportId" required>
+                <option disabled selected hidden>Sportart</option>
+                <?php foreach ($sports->getAll() as $sport): ?>
+                    <option value="<?= $sport['id'] ?>"><?= $sport['name'] ?></option>
+                <?php endforeach; ?>
+            </select>
 
-<h3>Team hinzufügen:</h3>
-<?php if (isset($error)) echo '<div class="alert alert-danger">' . $error . '</div>'; ?>
-<form method="POST">
-    <input type="text" name="name" placeholder="Teamname" class="form-control" required>
-    <select class="custom-select" name="sport" required>
-        <option disabled selected hidden>Sportart</option>
-        <?php foreach ($sports->getSports() as $sport): ?>
-            <option value="<?= $sport['id'] ?>"><?= $sport['name'] ?></option>
-        <?php endforeach; ?>
-    </select>
-
-    <button type="submit" class="btn btn-primary" name="addTeam">Hinzufügen</button>
-</form>
+            <button type="submit" class="btn btn-primary" name="addTeam">Hinzufügen</button>
+        </form>
+    </div>
+</div>
