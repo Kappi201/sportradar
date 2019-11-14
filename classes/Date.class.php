@@ -26,6 +26,7 @@ class Date{
 
     }
 
+
     public function addDate($date,$team_a_id,$team_b_id,$location_id) {
 
         $stmt = $this->db->prepare("INSERT INTO dates (date,team_a_id,team_b_id,location_id) VALUES (:date,:team_a_id,:team_b_id,:location_id)");

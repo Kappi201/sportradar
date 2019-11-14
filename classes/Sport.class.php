@@ -16,6 +16,15 @@ class Sport{
 
     }
 
+    public function getSports(){
+
+        $stmt = $this->db->prepare("SELECT * FROM sports");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+
+    }
 
     public function getSport($id){
 
