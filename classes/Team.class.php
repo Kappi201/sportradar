@@ -27,18 +27,6 @@ class Team{
 
     }
 
-    //Alle Teams welche die angegebene sportId haben
-    public function getAllBySport($id){
-
-        $stmt = $this->db->prepare("SELECT id FROM teams WHERE sport_id = :id");
-        $stmt->bindValue(":id",$id);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        return $result;
-
-    }
-
     //1 Team gefunden mit angegbener ID
     public function get($id){
 
