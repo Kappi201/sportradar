@@ -2,7 +2,7 @@
 
 Hallo :)
 
-ER Diagramm als er_diagramm.png und Datenbank als sportradar.sql im root Verzeichnis vorhanden und zusätzlich per Email verschickt.
+ER Diagramm als er_diagramm.png und Datenbank als sportradar.sql im root Verzeichnis vorhanden.
 
 Liebe Grüße,
 Aleksander Kaplan
