@@ -1,4 +1,4 @@
-# sportradar
+# er_diagramm.png & sportradar.sql
 
 Hallo :)
 
