@@ -52,10 +52,9 @@ class Date
         }
 
         //Abfrage mit jeweiliger addition falls vorhanden
-        /*$stmt = $this->db->prepare("SELECT * FROM dates ".$addition." ORDER BY date");*/
         $stmt = $this->db->prepare("SELECT *
                                                 FROM dates
-                                                INNER JOIN teams ON dates.team_a_id = teams.id " . $addition);
+                                                INNER JOIN teams ON dates.team_a_id = teams.id " . $addition." ORDER BY date");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
